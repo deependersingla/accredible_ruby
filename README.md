@@ -2,7 +2,7 @@
 
 Accredible Ruby gem. 
 
-[![Build Status](https://travis-ci.org/Integralist/Sinderella.png?branch=master)](http://travis-ci.org/deependersingla/accredible_ruby)  
+[![Build Status](https://travis-ci.org/Integralist/AccredibleRuby.png?branch=master)](http://travis-ci.org/deependersingla/accredible_ruby)  
 
 [![Coverage Status](https://coveralls.io/repos/deependersingla/accredible_ruby/badge.svg)](https://coveralls.io/r/deependersingla/accredible_ruby)
 
