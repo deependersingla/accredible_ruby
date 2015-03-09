@@ -36,7 +36,8 @@ Accredible.api_key = 'YOUR_API_KEY'
 ### Example
 ```ruby
 1.) # Add a url based evidence to the user certificate
- params = {email: "user_email", achievement_id: "course_achievement_id", url: "www.google.com", description: "description of evidence"}
+ params = {email: "user_email", achievement_id: "course_achievement_id", url: "url of evidence", description: "description of evidence"}
+ #find course achievement_id from your Accredible dashboard. 
  Accredible::Evidence.add_url_evidence(params)
 ```
 
