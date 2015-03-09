@@ -13,5 +13,7 @@ module Accredible
         'See https://accredible.com for details, or email support@accredible.com ' \
         'if you have any questions.')
     end
+
+    return "everything fine"
   end
 end
