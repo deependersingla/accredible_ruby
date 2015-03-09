@@ -21,7 +21,7 @@ module Accredible
   	attr_accessor :api_key
   end
 
-  def self.request(method, url, params={}, headers={})
+  def self.request(method,url,payload=nil,headers={})
   	unless api_key 
       raise AuthenticationError.new('No API key provided. ' \
         'Set your API key using "Accredible.api_key = <API-KEY>". ' \
@@ -36,19 +36,18 @@ module Accredible
       response  = post_request(url, payload)
     end
 
-    if response.code == 400
-      raise AuthenticationError.new('API key provided. is provided' \
-        'Set your API key using "Accredible.api_key = <API-KEY>". ' \
-        'You can get API keys from the Accredible web interface. ' \
-        'See https://accredible.com for details, or email support@accredible.com ' \
+    if response.code != 200
+      raise AuthenticationError.new(response.body.to_s +' email support@accredible.com ' \
         'if you have any questions.')
     end
+
+    return response
   end
 
   def self.get_request(url)
     uri = URI(url) 
     https = Net::HTTP.new(uri.host, uri.port)
-    req = Net::HTTP::Get.new(uri.path) 
+    req = Net::HTTP::Get.new(uri) 
     req["Authorization"] = 'Token token=' + self.api_key
     https.use_ssl = true 
     response = https.request(req)
@@ -57,7 +56,17 @@ module Accredible
     return response
   end
 
-  def self.post_request(url)
+  def self.post_request(url,payload)
+    uri = URI(url) 
+    https = Net::HTTP.new(uri.host, uri.port)
+    req = Net::HTTP::Post.new(uri.path) 
+    req.body = payload.to_json
+    req["Authorization"] = 'Token token=' + self.api_key
+    req["Content-Type"] = "application/json"
+    https.use_ssl = true 
+    response = https.request(req)
+    response.code
+    response.body
   end
   
 end
