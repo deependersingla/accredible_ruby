@@ -1,7 +1,4 @@
 require "accredible/version"
-
-
-
 #add api files
 require "accredible/api_resource"
 require "accredible/evidence"
@@ -34,6 +31,8 @@ module Accredible
       response = get_request(url)
     elsif method == "post"
       response  = post_request(url, payload)
+    elsif method == "post_local_file"
+      response = post_local_file(url, payload)
     end
     
     unless response.code == '200'
@@ -67,5 +66,20 @@ module Accredible
     response = https.request(req)
     return response
   end
-  
+
+  def self.post_local_file(url, payload)
+    require 'net/http/post/multipart'
+    require 'json'
+    url = URI.parse(url)
+    req = Net::HTTP::Post::Multipart.new url.path,
+    "file" => UploadIO.new(File.new(payload[:file])),
+    "evidence_item" => {description: payload[:description]}.to_json
+    req["Authorization"] = 'Token token=' + self.api_key
+    n = Net::HTTP.new(url.host, url.port)
+    n.use_ssl = true
+    res = n.start do |http|
+      http.request(req)
+    end
+    return resp
+  end
 end
