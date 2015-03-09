@@ -61,7 +61,7 @@ Accredible::Evidence.add_local_file(params)
 ### Notes
 1) Failed requests (such as the ones requesting non-existent entities) will throw `Accredible::AccredibleError`.
 
-2) We recommened to run actions as backgroung jobs, so that user don't have to wait. 
+2) We recommened to run actions as background jobs, so that user don't have to wait. 
 
 ## Contributing
 
