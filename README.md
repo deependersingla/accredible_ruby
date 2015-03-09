@@ -29,13 +29,14 @@ This is Gem for generating Accredible Certificate: https://www.accredible.com/ex
 You will need a Accredible API key. You can get one by [signing up here](https://accredible.com/issuer/sign_up).
 
 ```ruby
+#Ruby Script
 require 'accredible'
 Accredible.api_key = 'YOUR_API_KEY'
 ```
 
 
 ```rails
-#Add api key to config/application.rb
+#Rails, Add api key to config/application.rb
 Accredible.api_key = 'YOUR_API_KEY'
 ```
 
