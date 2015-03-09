@@ -45,14 +45,14 @@ Accredible.api_key = 'YOUR_API_KEY'
  params = {email: "user_email", achievement_id: "course_achievement_id", url: "url of evidence", description: "description of evidence"}
  #find course achievement_id from your Accredible dashboard.
  #url can be anything which is available on cloud including files stored on #s3. 
- example params: {email: "deepender281190@gmail.com", achievement_id: "examplecourse1", url: "www.accredible.com", description: "example description"}
+ example params= {email: "deepender281190@gmail.com", achievement_id: "examplecourse1", url: "www.accredible.com", description: "example description"}
  
  Accredible::Evidence.add_url_evidence(params)
 
 2.) # Add a local file as evidence
 params = {email: "user_email", achievement_id: "course_achievement_id", file: "location_of_file", description: "description of evidence"}
 #location of file for ex: /user/var/example_pdf.pdf
-example: params: {email: "deepender281190@gmail.com", achievement_id: "examplecourse1", file: "localfile.pdf", description: "example description"}
+example: params= {email: "deepender281190@gmail.com", achievement_id: "examplecourse1", file: "localfile.pdf", description: "example description"}
 
 Accredible::Evidence.add_local_file(params)
 ```

@@ -71,8 +71,8 @@ module Accredible
     require 'net/http/post/multipart'
     require 'json'
     url = URI.parse(url)
-    req = Net::HTTP::Post::Multipart.new url.path,
-    "file" => UploadIO.new(File.new(payload[:file])),
+    req = Net::HTTP::Post::Multipart.new url.path, 
+    "file" => UploadIO.new(File.new(payload[:file]), nil), 
     "evidence_item" => {description: payload[:description]}.to_json
     req["Authorization"] = 'Token token=' + self.api_key
     n = Net::HTTP.new(url.host, url.port)
@@ -80,6 +80,6 @@ module Accredible
     res = n.start do |http|
       http.request(req)
     end
-    return resp
+    return res
   end
 end
