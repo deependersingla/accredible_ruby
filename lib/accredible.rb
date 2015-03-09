@@ -18,11 +18,11 @@ require "accredible/errors/authentication_error"
 
 module Accredible
   class << self
-  	attr_accessor :api_key
+    attr_accessor :api_key
   end
 
   def self.request(method,url,payload=nil,headers={})
-  	unless api_key 
+    unless api_key 
       raise AuthenticationError.new('No API key provided. ' \
         'Set your API key using "Accredible.api_key = <API-KEY>". ' \
         'You can get API keys from the Accredible web interface. ' \
@@ -35,8 +35,8 @@ module Accredible
     elsif method == "post"
       response  = post_request(url, payload)
     end
-
-    if response.code != 200
+    
+    unless response.code == '200'
       raise AuthenticationError.new(response.body.to_s +' email support@accredible.com ' \
         'if you have any questions.')
     end
@@ -65,8 +65,7 @@ module Accredible
     req["Content-Type"] = "application/json"
     https.use_ssl = true 
     response = https.request(req)
-    response.code
-    response.body
+    return response
   end
   
 end

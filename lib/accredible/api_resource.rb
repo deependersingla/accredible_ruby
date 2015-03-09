@@ -6,7 +6,7 @@ module Accredible
       response = Accredible.request('get', url)
       credentials  = JSON.parse(response.body)["credentials"]
       if credentials.count == 1 
-         return credentials.first.id
+         return credentials.first["id"]
       elsif credentials.count == 0
       	raise AccredibleError.new('user: ' + user_email  + 'don\'t have any certificate'\
         'See https://accredible.com for details, or email support@accredible.com ' \
