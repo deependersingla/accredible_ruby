@@ -1,5 +1,10 @@
 require "accredible/version"
 
+#errors
+require 'accredible/errors/accredible_error'
+#require 'accredible/errors/api_error'
+require "accredible/errors/authentication_error"
+
 module Accredible
   class << self
   	attr_accessor :api_key
