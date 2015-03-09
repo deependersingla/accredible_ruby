@@ -26,6 +26,23 @@ Or install it yourself as:
 
 This is Gem for generating Accredible Certificate: https://www.accredible.com/example and adding evidence also to the project.
 
+You will need a Accredible API key. You can get one by [signing up here](https://accredible.com/issuer/sign_up).
+
+```ruby
+require 'accredible'
+Accredible.api_key = 'YOUR_API_KEY'
+```
+
+### Example
+```ruby
+1.) # Add a url based evidence to the user certificate
+ params = {email: "user_email", achievement_id: "course_achievement_id", url: "www.google.com", description: "description of evidence"}
+ Accredible::Evidence.add_url_evidence(params)
+```
+
+### Notes
+Failed requests (such as the ones requesting non-existent entities) will throw `Accredible::AccredibleError`.
+
 ## Contributing
 
 1. Fork it ( https://github.com/[my-github-username]/accredible/fork )
