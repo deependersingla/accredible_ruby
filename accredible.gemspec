@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Deepender Singla"]
   spec.email         = ['deepender281190@gmail.com']
   spec.summary       = %q{Ruby Bindings for Accredible certificate}
-  spec.description   = %q{Accredible is best way to generate certificate. www.accredible.com/example}
+  spec.description   = %q{Accredible is the best way to generate online learning certificates. www.accredible.com/example}
   spec.homepage      = "https://github.com/accredible/accredible_ruby"
   spec.license       = "MIT"
 
