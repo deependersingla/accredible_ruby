@@ -2,7 +2,7 @@ module Accredible
   class ApiResource
 
   	def self.check_credential(user_email,achievement_id)
-  	  url = "https://staging.accredible.com/v1/credentials?achievement_id="+ achievement_id.to_s + "&email=" + user_email.to_s
+  	  url = "https://api.accredible.com/v1/credentials?achievement_id="+ achievement_id.to_s + "&email=" + user_email.to_s
       response = Accredible.request('get', url)
       credentials  = JSON.parse(response.body)["credentials"]
       if credentials.count == 1 
