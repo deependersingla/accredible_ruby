@@ -18,7 +18,7 @@ module Accredible
     attr_accessor :api_key
   end
 
-  URL = "https://staging.accredible.com"
+  URL = "https://api.accredible.com"
 
   def self.request(method,url,payload=nil,headers={})
     unless api_key 
