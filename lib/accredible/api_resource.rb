@@ -3,7 +3,7 @@ module Accredible
 
   	def self.check_credential(user_email,achievement_id)
   	  url = URL + "/v1/credentials?achievement_id="+ achievement_id.to_s + "&email=" + user_email.to_s
-      if self.string_check == false
+      if Accredible.string_check && Accredible.string_check == true
         url = URL + "/v1/credentials?achievement_id="+ achievement_id.to_s + "&email=" + user_email.to_s + "&string_check=true"
       end
       response = Accredible.request('get', url)
